@@ -1,0 +1,29 @@
+[package]
+name = "kornia-paligemma"
+categories = ["computer-vision", "science::robotics"]
+description = "Rust implementation of Google Paligemma vision language model"
+edition = "2024"
+homepage = "http://kornia.org"
+include = ["Cargo.toml"]
+license = "Apache-2.0"
+repository = "https://github.com/kornia/kornia-paligemma"
+rust-version = "1.85"
+version = "0.1.0"
+
+[dependencies]
+candle-core = { version = "0.8.4" }
+candle-transformers = { version = "0.8.4" }
+candle-examples = "0.8.4"
+candle-nn = { version = "0.8.4" }
+hf-hub = "0.4.2"
+kornia = "0.1.8"
+log = "0.4"
+serde_json = "1"
+tokenizers = "0.21.1"
+thiserror = "2"
+
+[features]
+cuda = ["candle-core/cuda", "candle-transformers/cuda", "candle-nn/cuda"]
+
+[dev-dependencies]
+argh = "0.1"
