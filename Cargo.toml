@@ -11,12 +11,13 @@ rust-version = "1.85"
 version = "0.1.0"
 
 [dependencies]
-candle-core = { version = "0.8.4" }
-candle-transformers = { version = "0.8.4" }
-candle-examples = "0.8.4"
-candle-nn = { version = "0.8.4" }
+candle-core = { version = "0.9.1" }
+candle-transformers = { version = "0.9.1" }
+candle-examples = "0.9.1"
+candle-nn = { version = "0.9.1" }
 hf-hub = "0.4.2"
-kornia = "0.1.8"
+kornia-image = "0.1.9"
+kornia-imgproc = "0.1.9"
 log = "0.4"
 serde_json = "1"
 tokenizers = "0.21.1"

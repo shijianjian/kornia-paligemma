@@ -3,8 +3,8 @@ use crate::utils::hub_load_safetensors;
 use candle_core::{DType, Device, Tensor};
 use candle_nn::VarBuilder;
 use candle_transformers::models::paligemma::{Config, Model};
-use hf_hub::{api::sync::Api, Repo, RepoType};
-use kornia::image::Image;
+use hf_hub::{Repo, RepoType, api::sync::Api};
+use kornia_image::Image;
 use tokenizers::Tokenizer;
 
 #[derive(thiserror::Error, Debug)]
@@ -16,7 +16,7 @@ pub enum PaligemmaError {
     CandleError(#[from] candle_core::Error),
 
     #[error(transparent)]
-    ImageError(#[from] kornia::image::ImageError),
+    ImageError(#[from] kornia_image::ImageError),
 
     #[error(transparent)]
     TokenizerError(#[from] tokenizers::Error),
@@ -124,10 +124,10 @@ impl Paligemma {
         stdout_debug: bool,
     ) -> Result<String, PaligemmaError> {
         // resize image to 224x224
-        kornia::imgproc::resize::resize_fast(
+        kornia_imgproc::resize::resize_fast(
             image,
             &mut self.img_buf,
-            kornia::imgproc::interpolation::InterpolationMode::Bilinear,
+            kornia_imgproc::interpolation::InterpolationMode::Bilinear,
         )?;
 
         // convert to tensor with shape [1, 3, 224, 224]
