@@ -1,7 +1,7 @@
 use argh::FromArgs;
 use std::path::PathBuf;
 
-use kornia::io::functional as F;
+use kornia_io as F;
 use kornia_paligemma::{Paligemma, PaligemmaConfig};
 
 #[derive(FromArgs)]
@@ -24,7 +24,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Args = argh::from_env();
 
     // read the image
-    let image = F::read_image_any(args.image_path)?;
+    let image = F::jpeg::read_image_jpeg_rgb8(args.image_path)?;
 
     // create the paligemma model
     let mut paligemma = Paligemma::new(PaligemmaConfig::default())?;

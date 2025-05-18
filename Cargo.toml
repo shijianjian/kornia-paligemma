@@ -28,3 +28,4 @@ cuda = ["candle-core/cuda", "candle-transformers/cuda", "candle-nn/cuda"]
 
 [dev-dependencies]
 argh = "0.1"
+kornia-io = "0.1.9"
