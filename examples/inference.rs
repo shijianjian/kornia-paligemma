@@ -24,7 +24,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Args = argh::from_env();
 
     // read the image
-    let image = F::jpeg::read_image_jpeg_rgb8(args.image_path)?;
+    let image = if args.image_path.extension().unwrap_or_default() == "jpg" {
+        F::jpeg::read_image_jpeg_rgb8(args.image_path)?
+    } else {
+        F::png::read_image_png_rgb8(args.image_path)?
+    };
 
     // create the paligemma model
     let mut paligemma = Paligemma::new(PaligemmaConfig::default())?;

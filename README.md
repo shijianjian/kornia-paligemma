@@ -29,3 +29,10 @@ cap enTwo men are sitting under an umbrella, the left man is wearing sunglasses.
 16 tokens generated (26.15 token/s)
 ```
 
+### Inference as a session
+
+For multiple questions about the same image:
+
+```bash
+cargo run --example session -- -i ./data/gangsters.png
+```
